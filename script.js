@@ -96,3 +96,18 @@ decimal.addEventListener("click", function() {
             display.value = lastNum.join('');
         }
 });
+
+// EXTRA CREDIT 2 -- ADD DELETE FUNCTIONALITY
+
+const del = document.querySelector(".del");
+
+del.addEventListener("click", function() {
+    if (operatorSym === 0) {
+        firstNum.pop();
+        display.value = firstNum.join('');
+    }
+    if (operatorSym !== 0) {
+        lastNum.pop();
+        display.value = lastNum.join('');
+    }
+});
