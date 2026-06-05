@@ -111,3 +111,33 @@ del.addEventListener("click", function() {
         display.value = lastNum.join('');
     }
 });
+
+// EXTRA CREDIT 3 -- ADD KEYBOARD SUPPORT
+
+const input = document.querySelector("input");
+
+input.addEventListener("input", function(e) {
+    if (operatorSym === 0) {
+        firstTarget = e.target.value;
+        firstNum = firstTarget.split('');
+    }
+    if (operatorSym !== 0) {
+        lastTarget = e.target.value;
+        lastNum = lastTarget.split('');
+    }
+})
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "+") {
+        operatorSym = 1;
+    }
+    if (e.key === "-") {
+        operatorSym = 2;
+    }
+    if (e.key === "*") {
+        operatorSym = 3;
+    }
+    if (e.key === "/") {
+        operatorSym = 4;
+    }
+})
