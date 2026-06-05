@@ -1,21 +1,26 @@
-let first = 0;
-let last = 0;
-let operator = 0;
+let firstNum = [];
+let lastNum = [];
+let operatorSym = 0;
 
 function add(a, b) {
-    return a + b;
+    return +a + +b;
 }
 
 function subtract(a, b) {
-    return a - b;
+    return +a - +b;
 }
 
 function multiply(a, b) {
-    return a * b;
+    return +a * +b;
 }
 
 function divide(a, b) {
-    return a / b;
+    if (+b === 0) {
+        console.log("ERROR");
+        return 0;
+    } else {
+        return +a / +b;
+    }
 }
 
 function operate(first, last, operator) {
@@ -32,5 +37,48 @@ function operate(first, last, operator) {
         return divide(first,last);
     }
 }
+const display = document.querySelector(".display");
 
+const numberValue = document.querySelectorAll(".number").forEach(function(button) {
+    button.addEventListener("click", function() {
+        if (operatorSym === 0) {
+            firstNum.push(+this.value);
+            display.value = firstNum.join('');
+        }
+        if (operatorSym !== 0) {
+            lastNum.push(+this.value);
+            display.value = lastNum.join('');
+        }
+    });
+});
+
+const operatorValue = document.querySelectorAll(".operator").forEach(function(button) {
+    button.addEventListener("click", function() {
+        operatorSym = +this.value;
+        console.log(operatorSym);
+    });
+})
+
+const equals = document.querySelector(".equals");
+
+equals.addEventListener("click", () => {
+    if (firstNum.length !== 0 && lastNum.length !== 0 && operatorSym !== 0) {
+        let firstNumJoin = firstNum.join('');
+        let lastNumJoin = lastNum.join('');
+        display.value = operate(firstNumJoin, lastNumJoin, operatorSym).toFixed(5);
+        firstNum = [];
+        lastNum = [];
+        operatorSym = 0;
+    }
+});
+
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+    firstNum = [];
+    lastNum = [];
+    operatorSym = 0;
+    display.value = "";
+    console.log("ALL CLEAR");
+})
 //i think next step to make calculator work with buttons is to add event listener things to pull numbers to JS
