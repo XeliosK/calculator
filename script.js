@@ -81,4 +81,18 @@ clear.addEventListener("click", () => {
     display.value = "";
     console.log("ALL CLEAR");
 })
-//i think next step to make calculator work with buttons is to add event listener things to pull numbers to JS
+
+const decimal = document.querySelector(".decimal");
+
+// EXTRA CREDIT 1 -- ADD DECIMAL FUNCTIONALITY
+
+decimal.addEventListener("click", function() {
+        if (operatorSym === 0) {
+            firstNum.push(this.value);
+            display.value = firstNum.join('');
+        }
+        if (operatorSym !== 0) {
+            lastNum.push(this.value);
+            display.value = lastNum.join('');
+        }
+});
