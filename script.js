@@ -87,11 +87,11 @@ const decimal = document.querySelector(".decimal");
 // EXTRA CREDIT 1 -- ADD DECIMAL FUNCTIONALITY
 
 decimal.addEventListener("click", function() {
-        if (operatorSym === 0) {
+        if (operatorSym === 0 && !firstNum.includes('.')) {
             firstNum.push(this.value);
             display.value = firstNum.join('');
         }
-        if (operatorSym !== 0) {
+        if (operatorSym !== 0 && !lastNum.includes('.')) {
             lastNum.push(this.value);
             display.value = lastNum.join('');
         }
